@@ -26,6 +26,11 @@
 })();
 
 
+function dom (){
+	this.link = '';
+	this.title = '';
+	this.img = '';
+}
 
 function setLayout(){
 	var body = document.getElementById("body-container");
@@ -38,18 +43,35 @@ function goNotification(){
 }
 
 function checkForChanges(video) {
-	
+	var imageHref = ( document.getElementsByClassName("video-thumb  yt-thumb yt-thumb-48 g-hovercard")[0].children[0].children[0].children[0].src) || '';
+		var xx = setInterval(function(){
+		if (document.getElementById("eow-title")){
+			if (video.link != location.search && video.title != document.getElementById("eow-title").title && imageHref.length){
+				clearInterval(xx);
+	   			video.link = location.search;
+				video.img = imageHref;
+				video.title = document.getElementById("eow-title").title;
+				notifyMe(video.title, imageHref);
+			}
+		}
+	}, 1000);
 }
 
 
 function notifyMe(t, image) {
-	try {
 	if (Notification.permission === "granted") {
-	
-	var n = new Notification("Now palying","title");
-	}catch(e){
-		console.log(e)
-		
-	}
+	var options = {
+		body: t,
+		icon: image || "https://www.gstatic.com/images/icons/material/product/2x/youtube_64dp.png"
+	};
+	var n = new Notification("Now palying",options);
+  }
+
+  else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
+      if (permission === "granted") {
+console.log('Michal coś zjebałes');
+      }
+    });
   }
 }
