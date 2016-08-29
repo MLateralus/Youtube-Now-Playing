@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name        	      Youtube bookmaker
-// @namespac              http://tampermonkey.net/
+// @name        	      Youtube Now Playing
+// @namespac			  http://tampermonkey.net/
 // @version     	      0.1
-// @description 	      try to take over the world!
+// @description 	      Notification to the desktop about current palying video
 // @author      	      Majkel
-// @match                 *://www.youtube.com/watch*
+// @match                *://www.youtube.com/watch*
 // @require     	      https://code.jquery.com/jquery-2.1.4.min.js
 // @domain      	      youtube.com/
 // @run-at      	      document-end
@@ -15,7 +15,7 @@
 // @grant       	      GM_registerMenuCommand
 // @grant                 GM_openInTab
 // @grant        	      unsafeWindow
-// @priority        	  9001
+// @priority        	      9001
 // ==/UserScript==
 
 
