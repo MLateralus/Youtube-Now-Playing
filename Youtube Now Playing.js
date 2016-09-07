@@ -39,11 +39,12 @@ function setLayout(){
 
 function goNotification(){
 	var video = new dom();
-    var x = setInterval(function(){ checkForChanges(video); }, 2000);
+    var runEvery2000ms = setInterval(function(){ checkForChanges(video); }, 2000);
 }
 
 function checkForChanges(video) {
 	var imageHref = ( document.getElementsByClassName("video-thumb  yt-thumb yt-thumb-48 g-hovercard")[0].children[0].children[0].children[0].src) || '';
+	// This imageHref need to ensure the image is loaded, or else it will display previous image
 		var xx = setInterval(function(){
 		if (document.getElementById("eow-title")){
 			if (video.link != location.search && video.title != document.getElementById("eow-title").title && imageHref.length){
